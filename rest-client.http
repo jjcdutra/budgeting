@@ -1,0 +1,49 @@
+### 
+GET http://localhost:8080/api/chat-model?prompt=oi
+
+### 
+GET http://localhost:8080/api/chat?prompt=qual seu nome?
+
+### 
+POST http://localhost:8080/api/transcribe
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="recording-1.m4a"
+Content-Type: audio/mp4
+
+< ./src/test/resources/audio/recording-1.m4a
+--WebAppBoundary--
+
+###
+# @name sinthesize
+POST http://localhost:8080/api/sinthesize
+Content-Type: application/json
+
+{
+  "text": "Olá, seja bem-vindo ao orçamento pessoal!"
+}
+
+###
+POST http://localhost:8080/transactions
+Content-Type: application/json
+
+{
+  "description": "Compra de mantimentos",
+  "amount": 12533,
+  "category": "GROCERIES"
+}
+
+###
+GET http://localhost:8080/transactions/GROCERIES
+
+### 
+POST http://localhost:8080/transactions/ia
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="recording-1.m4a"
+Content-Type: audio/mp4
+
+< ./src/test/resources/audio/recording-1.m4a
+--WebAppBoundary--
